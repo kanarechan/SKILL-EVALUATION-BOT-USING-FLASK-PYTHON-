@@ -69,8 +69,10 @@ def my_form_post():
     data1.to_string(index=False, header=False)
     html_string = '''
     <html>
-    <head><title>Short Listed Students</title></head>
+    <head>
+    <title>Short Listed Students</title>
     <link rel="stylesheet" type="text/css" href="static/df_style.css"/>
+    </head>
     <body>
     <marquee behavior="alternate">
     <h1 style="color:salmon;font-family:Times New Roman; font-weight:bolder; font-size:40px;">SELECTED STUDENTS :)</h1>
@@ -80,6 +82,7 @@ def my_form_post():
     </html>.
     '''
     data1.insert(loc=0, column='Sr.no', value=np.arange(1,len(data1)+1))
+
     # OUTPUT AN HTML FILE
     with open('static/myhtml.html', 'w') as f:
         f.write(html_string.format(table=data1.to_html(classes='mystyle',index=False)))
